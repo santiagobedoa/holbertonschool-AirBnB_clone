@@ -3,16 +3,28 @@
 from datetime import datetime
 import uuid
 
+date_time = "%Y-%m-%dT%H:%M:%S.%f"
+
 
 class BaseModel():
     """
     class that defines all common
     attributes/methods for other classes
     """
-    def __init__(self):
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        """ Object instantiation with optional dictionary attributes """
+        if kwargs:
+            for key, value in kwargs.items():
+                if key is "created_at":
+                    self.created_at = datetime.strptime(value, date_time)
+                elif key is "updated_at":
+                    self.updated_at = datetime.strptime(value, date_time)
+                elif key is not "__class__":
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def save(self):
         """Updates public attribute updated_at with current datetime"""
