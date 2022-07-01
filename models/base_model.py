@@ -17,11 +17,11 @@ class BaseModel():
         """ Object instantiation with optional dictionary attributes """
         if kwargs:
             for key, value in kwargs.items():
-                if key is "created_at":
+                if key == "created_at":
                     self.created_at = datetime.strptime(value, date_time)
-                elif key is "updated_at":
+                elif key == "updated_at":
                     self.updated_at = datetime.strptime(value, date_time)
-                elif key is not "__class__":
+                elif key != "__class__":
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
