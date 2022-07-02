@@ -4,7 +4,7 @@
 Unittest session for base_model.py
 """
 
-import models
+
 import unittest
 from unittest import mock
 from models import base_model
@@ -40,6 +40,35 @@ class TestBase(unittest.TestCase):
         last_updated_at = self.base.updated_at
         self.assertNotEqual(init_updated_at, last_updated_at)
         self.assertTrue(mock_engine.save.called)
+
+    def test_to_dict(self):
+        """ Test dictionary conversion creating new key/value pairs """
+        self.base.name = "Test_Model"
+        self.base.number = 42
+        dict_test = self.base.to_dict()
+        test_attr = ['id',
+                     'name',
+                     'number',
+                     'created_at',
+                     'updated_at',
+                     '__class__'
+                     ]
+        real_attr = list(dict_test.keys())
+        self.assertCountEqual(real_attr, test_attr)
+
+    def test_to_dict_values(self):
+        """ Test dict values """
+        time_fmt = "%Y-%m-%dT%H:%M:%S.%f"
+        self.base.name = "Test_Model"
+        self.base.number = 42
+        dict_test = self.base.to_dict()
+        self.assertEqual(dict_test['name'], "Test_Model")
+        self.assertEqual(dict_test['number'], 42)
+        self.assertEqual(dict_test['__class__'], "BaseModel")
+        self.assertEqual(dict_test['created_at'],
+                         self.base.created_at.strftime(time_fmt))
+        self.assertEqual(dict_test['updated_at'],
+                         self.base.updated_at.strftime(time_fmt))
 
 
 if __name__ == '__main__':
