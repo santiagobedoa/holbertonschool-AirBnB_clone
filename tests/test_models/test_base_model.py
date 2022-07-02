@@ -4,7 +4,6 @@
 Unittest session for base_model.py
 """
 
-
 import unittest
 from unittest import mock
 from models import base_model

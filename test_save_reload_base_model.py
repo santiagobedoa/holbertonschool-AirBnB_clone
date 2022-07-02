@@ -14,3 +14,15 @@ my_model.name = "My_First_Model"
 my_model.my_number = 89
 my_model.save()
 print(my_model)
+
+print("-- Create another new object --")
+an_model = BaseModel()
+an_model.name = "Manu"
+an_model.number = 42
+an_model.save()
+print(an_model)
+
+print("-- Reloaded objects --")
+for obj_id in all_objs.keys():
+    obj = all_objs[obj_id]
+    print(obj)

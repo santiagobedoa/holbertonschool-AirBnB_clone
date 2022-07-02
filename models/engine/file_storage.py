@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Classs FileStorage """
+""" Class FileStorage """
 
 import json
 
@@ -28,7 +28,7 @@ class FileStorage:
         for key in self.__objects.keys():
             json_dict[key] = self.__objects[key].to_dict()
         with open(self.__file_path, "w", encoding="UTF-8") as write_file:
-            json.dump(json_dict, write_file)
+            json.dump(json_dict, write_file, indent=4)
 
     def reload(self):
         """ Deserializes the JSON file to __objects """
