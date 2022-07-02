@@ -4,7 +4,9 @@
 Unittest session for base_model.py
 """
 
+import models
 import unittest
+from unittest import mock
 from models import base_model
 
 BaseModel = base_model.BaseModel
@@ -29,6 +31,15 @@ class TestBase(unittest.TestCase):
             if word in base_str:
                 count += 1
         self.assertEqual(3, count)
+
+    @mock.patch('models.storage')
+    def test_save(self, mock_engine):
+        """ Test base save method without models.storage method"""
+        init_updated_at = self.base.updated_at
+        self.base.save()
+        last_updated_at = self.base.updated_at
+        self.assertNotEqual(init_updated_at, last_updated_at)
+        self.assertTrue(mock_engine.save.called)
 
 
 if __name__ == '__main__':
