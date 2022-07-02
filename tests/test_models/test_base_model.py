@@ -33,7 +33,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(3, count)
 
     def test_kwargs(self):
-        """ Test attributes pass by kwargs """
+        """ Test for attributes pass by kwargs """
         k_base = BaseModel(name="Test_Model", number=42)
         dict_kbase = k_base.to_dict()
         test_attr = ['name',
