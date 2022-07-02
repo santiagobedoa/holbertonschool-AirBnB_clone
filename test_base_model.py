@@ -5,8 +5,8 @@ my_model = BaseModel()
 my_str = str(my_model)
 print(my_str)
 print("---------")
-my_model.name = "My First Model"
-my_model.my_number = 89
+my_model.name = "Manu"
+my_model.my_number = 42
 print(my_model)
 my_model.save()
 print(my_model)

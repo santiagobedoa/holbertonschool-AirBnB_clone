@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Classs FileStorage """
+""" Class FileStorage """
 
 import json
 
