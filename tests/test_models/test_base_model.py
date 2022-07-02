@@ -32,6 +32,17 @@ class TestBase(unittest.TestCase):
                 count += 1
         self.assertEqual(3, count)
 
+    def test_kwargs(self):
+        """ Test attributes pass by kwargs """
+        k_base = BaseModel(name="Test_Model", number=42)
+        dict_kbase = k_base.to_dict()
+        test_attr = ['name',
+                     'number',
+                     '__class__'
+                     ]
+        real_attr = list(dict_kbase.keys())
+        self.assertCountEqual(real_attr, test_attr)
+
     @mock.patch('models.storage')
     def test_save(self, mock_engine):
         """ Test base save method without models.storage method"""
@@ -69,6 +80,11 @@ class TestBase(unittest.TestCase):
                          self.base.created_at.strftime(time_fmt))
         self.assertEqual(dict_test['updated_at'],
                          self.base.updated_at.strftime(time_fmt))
+
+    def test_str(self):
+        """ Test string method """
+        test_str = f"[BaseModel] ({self.base.id}) {self.base.__dict__}"
+        self.assertEqual(test_str, str(self.base))
 
 
 if __name__ == '__main__':
