@@ -15,12 +15,12 @@ class FileStorage:
 
     def all(self):
         """ Returns dictionary of all saved objects """
-        try:
-            with open(self.__file_path, "r") as read_file:
-                for key, value in json.load(read_file).items():
-                    self.__objects[key] = value
-        except FileNotFoundError:
-            pass
+        # try:
+        #     with open(self.__file_path, "r") as read_file:
+        #         for key, value in json.load(read_file).items():
+        #             self.__objects[key] = value
+        # except FileNotFoundError:
+        #     pass
         return self.__objects
 
     def new(self, obj):
@@ -33,7 +33,7 @@ class FileStorage:
         json_dict = {}
         for key in self.__objects.keys():
             json_dict[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, "a", encoding="UTF-8") as write_file:
+        with open(self.__file_path, "w", encoding="UTF-8") as write_file:
             json.dump(json_dict, write_file, indent=4)
 
     def reload(self):

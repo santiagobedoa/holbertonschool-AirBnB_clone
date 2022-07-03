@@ -8,22 +8,22 @@ for obj_id in all_objs.keys():
     obj = all_objs[obj_id]
     print(obj)
 
-# print("-- Create a new object --")
-# my_model = BaseModel()
-# my_model.name = "My_First_Model"
-# my_model.my_number = 89
-# my_model.save()
-# print(my_model)
+print("-- Create a new object --")
+my_model = BaseModel()
+my_model.name = "My_First_Model"
+my_model.my_number = 89
+my_model.save()
+print(my_model)
 
-# print("-- Create a new object 2 --")
-# my_model = BaseModel()
-# my_model.name = "My_Second_Model"
-# my_model.my_number = 24
-# my_model.save()
-# print(my_model)
+print("-- Create a new object 2 --")
+my_model = BaseModel()
+my_model.name = "My_Second_Model"
+my_model.my_number = 24
+my_model.save()
+print(my_model)
 
 
-# print("-- Reloaded objects --")
-# for obj_id in all_objs.keys():
-#     obj = all_objs[obj_id]
-#     print(obj)
+print("-- Reloaded objects --")
+for obj_id in all_objs.keys():
+    obj = all_objs[obj_id]
+    print(obj)
