@@ -78,6 +78,27 @@ class HBNBCommand(cmd.Cmd):
                 list_objs.append(str(value))
             print(list_objs)
 
+    def do_update(self, line):
+        tokens = line.split()
+        if len(tokens) == 0:
+            print("** class name missing **")
+        elif len(tokens) == 1 and tokens[0] == 'BaseModel':
+            print("** instance id missing **")
+        elif tokens[0] != 'BaseModel':
+            print("** class doesn't exist **")
+        elif len(tokens) == 2:
+            print("** attribute name missing **")
+        elif len(tokens) == 3:
+            print("** value missing **")
+        else:
+            objects = storage.all()
+            for key in objects.keys():
+                if str(tokens[1]) in key:
+                    setattr(objects[key], tokens[2], tokens[3])
+                    objects[key].save
+                else:
+                    print("** no instance found **")
+
     def do_EOF(self, line):
         """ Exit the interpreter cleanly """
         print()
