@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
                             flag = key
                     if flag:
                         del(objects[flag])
-                        objects[flag].save()
+                        storage.save()
                     else:
                         print("** no instance found **")
             else:
@@ -100,12 +100,14 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             objects = storage.all()
+            flag = 0
             for key in objects.keys():
                 if str(tokens[1]) in key:
                     setattr(objects[key], tokens[2], tokens[3].replace('\"', ''))
                     objects[key].save()
-                else:
-                    print("** no instance found **")
+                    flag = 1
+            if flag == 0:
+                print("** no instance found **")
 
     def do_EOF(self, line):
         """ Exit the interpreter cleanly """
