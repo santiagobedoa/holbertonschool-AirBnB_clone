@@ -14,7 +14,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, line):
         if len(line) == 0:
             print("** class name missing **")
-        if line == 'BaseModel':
+        elif line == 'BaseModel':
             new = BaseModel()
             new.save()
             print(new.id)
