@@ -23,11 +23,13 @@ class BaseModel():
                     self.updated_at = datetime.strptime(value, date_time)
                 elif key != "__class__":
                     setattr(self, key, value)
+                elif key != "id":
+                    self.id = str(uuid.uuid4())
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            models.storage.new(self)
+        models.storage.new(self)
 
     def save(self):
         """Updates public attribute updated_at with current datetime"""
