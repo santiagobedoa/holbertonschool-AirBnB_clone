@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
                             flag = key
                     if flag:
                         del(objects[flag])
-                        storage.save()
+                        objects[key].save()
                     else:
                         print("** no instance found **")
             else:
