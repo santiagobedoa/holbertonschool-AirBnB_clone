@@ -73,14 +73,17 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line=""):
         """prints all string representation of all instances"""
-        if line != "" and line not in classes.keys():
-            print("** class doesn't exist **")
-        else:
-            objects = storage.all()
-            list_objs = list()
+        objects = storage.all()
+        list_objects = list()
+        if line == "":
+            for value in objects.values():
+                list_objects.append(str(value))
+            print(list_objects)
+        elif line in classes.keys():
             for key, value in objects.items():
-                list_objs.append(str(value))
-            print(list_objs)
+                if line in key:
+                    list_objects.append(str(value))
+            print(list_objects)
 
     def do_update(self, line):
         """update an instance based on the class id"""
