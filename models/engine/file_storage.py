@@ -2,7 +2,10 @@
 """ Class FileStorage """
 
 import json
+from models.base_model import BaseModel
+from models.user import User
 
+classes = {"BaseModel": BaseModel, "User": User}
 
 class FileStorage:
     """
@@ -15,12 +18,6 @@ class FileStorage:
 
     def all(self):
         """ Returns dictionary of all saved objects """
-        # try:
-        #     with open(self.__file_path, "r") as read_file:
-        #         for key, value in json.load(read_file).items():
-        #             self.__objects[key] = value
-        # except FileNotFoundError:
-        #     pass
         return self.__objects
 
     def new(self, obj):
@@ -40,6 +37,8 @@ class FileStorage:
         """ Deserializes the JSON file to __objects """
         try:
             with open(self.__file_path, "r") as read_file:
-                json.load(read_file)
+                json_obj = json.load(read_file)
+            for key in json_obj:
+                self.__objects[key] = classes[json_obj[key]["__class__"]](**json_obj[key])
         except FileNotFoundError:
             pass
