@@ -1,14 +1,9 @@
 {
-    "BaseModel.b4e7bed7-a729-465e-97ed-b1c6874de57c": {
-        "id": "b4e7bed7-a729-465e-97ed-b1c6874de57c",
-        "created_at": "2022-07-04T12:16:45.884023",
-        "updated_at": "2022-07-04T12:16:45.884059",
-        "__class__": "BaseModel"
-    },
-    "BaseModel.e877c156-eabd-4aa7-8b1d-968a393473f1": {
-        "id": "e877c156-eabd-4aa7-8b1d-968a393473f1",
-        "created_at": "2022-07-04T12:16:50.967625",
-        "updated_at": "2022-07-04T12:16:50.967661",
+    "BaseModel.38dc0c55-bdbd-477a-a4b2-c793d2fb202b": {
+        "id": "38dc0c55-bdbd-477a-a4b2-c793d2fb202b",
+        "created_at": "2022-07-04T15:32:04.789027",
+        "updated_at": "2022-07-04T15:32:21.161666",
+        "nombre": "manu",
         "__class__": "BaseModel"
     }
 }

@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
                             flag = key
                     if flag:
                         del(objects[flag])
-                        objects[key].save()
+                        objects[flag].save()
                     else:
                         print("** no instance found **")
             else:
@@ -79,6 +79,7 @@ class HBNBCommand(cmd.Cmd):
             print(list_objs)
 
     def do_update(self, line):
+        """update an instance based on the class id"""
         tokens = line.split()
         if len(tokens) == 0:
             print("** class name missing **")
@@ -94,10 +95,8 @@ class HBNBCommand(cmd.Cmd):
             objects = storage.all()
             for key in objects.keys():
                 if str(tokens[1]) in key:
-                    print(objects[key])
-                    setattr(objects[key], tokens[2], tokens[3])
+                    setattr(objects[key], tokens[2], tokens[3].replace('\"', ''))
                     objects[key].save()
-                    print(objects[key])
                 else:
                     print("** no instance found **")
 
