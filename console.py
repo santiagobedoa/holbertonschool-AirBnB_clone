@@ -10,7 +10,6 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
-    # Parece que los metodos hay que empezarlos con do_
     def do_create(self, line):
         if len(line) == 0:
             print("** class name missing **")
@@ -26,12 +25,12 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    def emptyline(self):
+    def empty_line(self):
         """ Upon empty line, do nothing """
         pass
 
     def do_quit(self, line):
-        """ Quit the interpreter using the command -> quit"""
+        """Quit command to exit the program"""
         return True
 
 
