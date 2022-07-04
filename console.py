@@ -12,6 +12,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_create(self, line):
+        """creates an instance an save it on file.json"""
         if len(line) == 0:
             print("** class name missing **")
         elif line == 'BaseModel':
@@ -32,13 +33,40 @@ class HBNBCommand(cmd.Cmd):
                     print("** instance id missing **")
                 else:
                     objects = storage.all()
+                    flag = None
                     for key in objects.keys():
                         if str(tokens[1]) in key:
-                            print(objects[key])
-                        else:
-                            print("** no instance found **")
+                            flag = key
+                    if flag:
+                        print(objects[flag])
+                    else:
+                        print("** no instance found **")
             else:
                 print("** class doesn't exist **")
+
+    def do_destroy(self, line):
+        """destroy an instance based on the class id"""
+        tokens = line.split()
+        if len(tokens) == 0:
+            print("** class name missing **")
+        else:
+            if tokens[0] == "BaseModel":
+                if len(tokens) == 1:
+                    print("** instance id missing **")
+                else:
+                    objects = storage.all()
+                    flag = None
+                    for key in objects.keys():
+                        if str(tokens[1]) in key:
+                            flag = key
+                    if flag:
+                        del(objects[flag])
+                        storage.save()
+                    else:
+                        print("** no instance found **")
+            else:
+                print("** class doesn't exist **")
+
 
     def do_EOF(self, line):
         """ Exit the interpreter cleanly """
