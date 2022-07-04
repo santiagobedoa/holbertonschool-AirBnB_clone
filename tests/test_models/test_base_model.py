@@ -31,6 +31,11 @@ class TestBase(unittest.TestCase):
                 count += 1
         self.assertEqual(3, count)
 
+    def test_class_attr(self):
+        """ Test class attribute pass as kwarg """
+        base_class = BaseModel(__class__='Test', id='1234567890987654321')
+        self.assertEqual(type(base_class), BaseModel)
+
     def test_kwargs(self):
         """ Test for attributes pass by kwargs """
         k_base = BaseModel(name="Test_Model", number=42)
