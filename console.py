@@ -3,7 +3,11 @@
 
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
+
+
+classes = {'BaseModel': BaseModel, 'User': User}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -15,8 +19,8 @@ class HBNBCommand(cmd.Cmd):
         """creates an instance an save it on file.json"""
         if len(line) == 0:
             print("** class name missing **")
-        elif line == 'BaseModel':
-            new = BaseModel()
+        elif line in classes.keys():
+            new = classes[line]()
             new.save()
             print(new.id)
         else:
@@ -28,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tokens) == 0:
             print("** class name missing **")
         else:
-            if tokens[0] == "BaseModel":
+            if tokens[0] in classes.keys():
                 if len(tokens) == 1:
                     print("** instance id missing **")
                 else:
@@ -50,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tokens) == 0:
             print("** class name missing **")
         else:
-            if tokens[0] == "BaseModel":
+            if tokens[0] in classes.keys():
                 if len(tokens) == 1:
                     print("** instance id missing **")
                 else:
@@ -69,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line=""):
         """prints all string representation of all instances"""
-        if line != "" and line != "BaseModel":
+        if line != "" and line not in classes.keys():
             print("** class doesn't exist **")
         else:
             objects = storage.all()
@@ -83,9 +87,9 @@ class HBNBCommand(cmd.Cmd):
         tokens = line.split()
         if len(tokens) == 0:
             print("** class name missing **")
-        elif len(tokens) == 1 and tokens[0] == 'BaseModel':
+        elif len(tokens) == 1 and tokens[0] in classes.keys():
             print("** instance id missing **")
-        elif tokens[0] != 'BaseModel':
+        elif tokens[0] not in classes.keys():
             print("** class doesn't exist **")
         elif len(tokens) == 2:
             print("** attribute name missing **")
