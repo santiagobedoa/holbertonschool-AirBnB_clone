@@ -5,7 +5,9 @@ import json
 from models.base_model import BaseModel
 from models.user import User
 
+
 classes = {"BaseModel": BaseModel, "User": User}
+
 
 class FileStorage:
     """
@@ -37,8 +39,8 @@ class FileStorage:
         """ Deserializes the JSON file to __objects """
         try:
             with open(self.__file_path, "r") as read_file:
-                json_obj = json.load(read_file)
-            for key in json_obj:
-                self.__objects[key] = classes[json_obj[key]["__class__"]](**json_obj[key])
+                j_o = json.load(read_file)
+            for k in j_o:
+                self.__objects[k] = classes[j_o[k]["__class__"]](**j_o[k])
         except FileNotFoundError:
             pass
