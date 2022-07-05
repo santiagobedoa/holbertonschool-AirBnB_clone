@@ -24,8 +24,6 @@
   <p>
    <br/>
   </p>
-  <iframe allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/E12Xc3H2xqo" width="560">
-  </iframe>
   <p>
    <br/>
   </p>
@@ -481,8 +479,6 @@ $
   <p>
    <br/>
   </p>
-  <iframe allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/p00ES-5K4C8" width="560">
-  </iframe>
  </div>
 </div>
 
