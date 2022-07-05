@@ -101,10 +101,10 @@ class HBNBCommand(cmd.Cmd):
         else:
             objects = storage.all()
             flag = 0
-            for key in objects.keys():
-                if str(tokens[1]) in key:
-                    setattr(objects[key], tokens[2], tokens[3].replace('\"', ''))
-                    objects[key].save()
+            for k in objects.keys():
+                if str(tokens[1]) in k:
+                    setattr(objects[k], tokens[2], tokens[3].replace('\"', ''))
+                    objects[k].save()
                     flag = 1
             if flag == 0:
                 print("** no instance found **")

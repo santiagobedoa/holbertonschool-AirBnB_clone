@@ -43,7 +43,7 @@ class TestStorage(unittest.TestCase):
         """ Test storage save the file """
         # self.base = BaseModel()
         self.base.save()
-        self.assertTrue(os.path.exists('./file.json') == True)
+        self.assertTrue(os.path.exists('./file.json') is True)
         os.remove('./file.json')
 
     def test_save_content(self):
