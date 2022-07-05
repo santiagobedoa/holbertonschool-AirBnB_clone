@@ -121,9 +121,12 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    def empty_line(self):
-        """ Upon empty line, do nothing """
-        pass
+    def emptyline(self):
+        """Called when an empty line is entered in response to the prompt.
+        """
+        if self.lastcmd:
+            self.lastcmd = ""
+            return self.onecmd('\n')
 
     def do_quit(self, line):
         """Quit command to exit the program"""
