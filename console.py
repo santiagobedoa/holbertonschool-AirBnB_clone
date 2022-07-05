@@ -10,6 +10,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models import storage
+import shlex
 
 
 class HBNBCommand(cmd.Cmd):
@@ -98,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """update an instance based on the class id"""
-        tokens = line.split()
+        tokens = shlex.split(line)
         if len(tokens) == 0:
             print("** class name missing **")
         elif len(tokens) == 1 and tokens[0] in self.classes.keys():
@@ -114,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
             flag = 0
             for k in objects.keys():
                 if str(tokens[1]) in k:
-                    setattr(objects[k], tokens[2], tokens[3].replace('\"', ''))
+                    setattr(objects[k], tokens[2], tokens[3])
                     objects[k].save()
                     flag = 1
             if flag == 0:
