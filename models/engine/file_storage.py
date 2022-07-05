@@ -11,16 +11,19 @@ from models.place import Place
 from models.review import Review
 
 
-classes = {"BaseModel": BaseModel, "User": User, "State": State,
-           "City": City, "Amenity": Amenity, "Place": Place,
-           "Review": Review}
-
-
 class FileStorage:
     """
     Class that serializes instances to
     a JSON file and deserializes JSON file to instances
     """
+    classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review}
 
     __file_path = "file.json"
     __objects = {}
@@ -48,6 +51,6 @@ class FileStorage:
             with open(self.__file_path, "r") as read_file:
                 j_o = json.load(read_file)
             for k in j_o:
-                self.__objects[k] = classes[j_o[k]["__class__"]](**j_o[k])
+                self.__objects[k] = self.classes[j_o[k]["__class__"]](**j_o[k])
         except FileNotFoundError:
             pass

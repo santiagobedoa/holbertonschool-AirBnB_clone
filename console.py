@@ -12,13 +12,17 @@ from models.review import Review
 from models import storage
 
 
-classes = {"BaseModel": BaseModel, "User": User, "State": State,
-           "City": City, "Amenity": Amenity, "Place": Place,
-           "Review": Review}
-
-
 class HBNBCommand(cmd.Cmd):
     """ Command line interpreter for AirBnB clone"""
+
+    classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review}
 
     prompt = '(hbnb) '
 
@@ -26,8 +30,8 @@ class HBNBCommand(cmd.Cmd):
         """creates an instance an save it on file.json"""
         if len(line) == 0:
             print("** class name missing **")
-        elif line in classes.keys():
-            new = classes[line]()
+        elif line in self.classes.keys():
+            new = self.classes[line]()
             new.save()
             print(new.id)
         else:
@@ -39,7 +43,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tokens) == 0:
             print("** class name missing **")
         else:
-            if tokens[0] in classes.keys():
+            if tokens[0] in self.classes.keys():
                 if len(tokens) == 1:
                     print("** instance id missing **")
                 else:
@@ -61,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tokens) == 0:
             print("** class name missing **")
         else:
-            if tokens[0] in classes.keys():
+            if tokens[0] in self.classes.keys():
                 if len(tokens) == 1:
                     print("** instance id missing **")
                 else:
@@ -86,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
             for value in objects.values():
                 list_objects.append(str(value))
             print(list_objects)
-        elif line in classes.keys():
+        elif line in self.classes.keys():
             for key, value in objects.items():
                 if line in key:
                     list_objects.append(str(value))
@@ -97,9 +101,9 @@ class HBNBCommand(cmd.Cmd):
         tokens = line.split()
         if len(tokens) == 0:
             print("** class name missing **")
-        elif len(tokens) == 1 and tokens[0] in classes.keys():
+        elif len(tokens) == 1 and tokens[0] in self.classes.keys():
             print("** instance id missing **")
-        elif tokens[0] not in classes.keys():
+        elif tokens[0] not in self.classes.keys():
             print("** class doesn't exist **")
         elif len(tokens) == 2:
             print("** attribute name missing **")
