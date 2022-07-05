@@ -20,7 +20,7 @@ class TestCity(unittest.TestCase):
 
     def test_init(self):
         """ Test city initialization """
-        self.assertIsInstance(self.citycity, City)
+        self.assertIsInstance(self.city, City)
 
     def test_init_att(self):
         """ test if initial attributes are set up """

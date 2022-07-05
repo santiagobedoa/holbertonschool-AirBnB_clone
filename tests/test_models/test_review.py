@@ -38,10 +38,11 @@ class TestReview(unittest.TestCase):
 
     def test_kwargs(self):
         """ Test for attributes pass by kwargs """
-        k_review = Review(text="Test_Model", number=42)
+        k_review = Review(text="Test_Model", place_id='15hds', user_id='82nb2')
         dict_kreview = k_review.to_dict()
         test_attr = ['text',
-                     'number',
+                     'place_id',
+                     'user_id',
                      '__class__'
                      ]
         real_attr = list(dict_kreview.keys())
@@ -59,11 +60,13 @@ class TestReview(unittest.TestCase):
     def test_to_dict(self):
         """ Test dictionary conversion creating new key/value pairs """
         self.review.text = "Test_Model"
-        self.review.number = 42
+        self.review.place_id = '234hs3'
+        self.review.user_id = '2h345k'
         dict_test = self.review.to_dict()
         test_attr = ['id',
                      'text',
-                     'number',
+                     'place_id',
+                     'user_id',
                      'created_at',
                      'updated_at',
                      '__class__'
@@ -75,10 +78,10 @@ class TestReview(unittest.TestCase):
         """ Test dict values """
         time_fmt = "%Y-%m-%dT%H:%M:%S.%f"
         self.review.text = "Test_Model"
-        self.review.number = 42
+        self.review.place_id = '234hs3'
         dict_test = self.review.to_dict()
         self.assertEqual(dict_test['text'], "Test_Model")
-        self.assertEqual(dict_test['number'], 42)
+        self.assertEqual(dict_test['place_id'], '234hs3')
         self.assertEqual(dict_test['__class__'], "Review")
         self.assertEqual(dict_test['created_at'],
                          self.review.created_at.strftime(time_fmt))
