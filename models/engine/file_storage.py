@@ -23,7 +23,8 @@ class FileStorage:
         "City": City,
         "Amenity": Amenity,
         "Place": Place,
-        "Review": Review}
+        "Review": Review
+        }
 
     __file_path = "file.json"
     __objects = {}

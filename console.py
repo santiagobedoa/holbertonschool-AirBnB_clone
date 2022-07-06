@@ -11,6 +11,7 @@ from models.place import Place
 from models.review import Review
 from models import storage
 import shlex
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -23,7 +24,8 @@ class HBNBCommand(cmd.Cmd):
         "City": City,
         "Amenity": Amenity,
         "Place": Place,
-        "Review": Review}
+        "Review": Review
+        }
 
     prompt = '(hbnb) '
 
@@ -147,7 +149,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_BaseModel(self, line):
-        "Test"
+        """Use: BaseModel.<method>() advanced task"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("BaseModel")
@@ -157,9 +159,12 @@ class HBNBCommand(cmd.Cmd):
                 if "BaseModel" in str(key):
                     count += 1
             print(count)
+        elif tokens[1].find("show") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_show(f"BaseModel {class_id}")
 
     def do_User(self, line):
-        """Test"""
+        """Use: User.<method>() advanced task"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("User")
@@ -169,9 +174,12 @@ class HBNBCommand(cmd.Cmd):
                 if "User" in str(key):
                     count += 1
             print(count)
+        elif tokens[1].find("show") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_show(f"User {class_id}")
 
     def do_State(self, line):
-        """Test"""
+        """Use: State.<method>() advanced task"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("State")
@@ -181,9 +189,12 @@ class HBNBCommand(cmd.Cmd):
                 if "State" in str(key):
                     count += 1
             print(count)
+        elif tokens[1].find("show") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_show(f"State {class_id}")
 
     def do_City(self, line):
-        """Test"""
+        """Use: City.<method>() advanced task"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("City")
@@ -193,9 +204,12 @@ class HBNBCommand(cmd.Cmd):
                 if "City" in str(key):
                     count += 1
             print(count)
+        elif tokens[1].find("show") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_show(f"City {class_id}")
 
     def do_Amenity(self, line):
-        """Test"""
+        """Use: Amenity.<method>() advanced task"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("Amenity")
@@ -205,9 +219,12 @@ class HBNBCommand(cmd.Cmd):
                 if "Amenity" in str(key):
                     count += 1
             print(count)
+        elif tokens[1].find("show") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_show(f"Amenity {class_id}")
 
     def do_Place(self, line):
-        """Test"""
+        """Use: Place.<method>() advanced task"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("Place")
@@ -217,9 +234,12 @@ class HBNBCommand(cmd.Cmd):
                 if "Place" in str(key):
                     count += 1
             print(count)
+        elif tokens[1].find("show") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_show(f"Place {class_id}")
 
     def do_Review(self, line):
-        """Test"""
+        """Use: Review.<method>() advanced task"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("Review")
@@ -229,6 +249,9 @@ class HBNBCommand(cmd.Cmd):
                 if "Review" in str(key):
                     count += 1
             print(count)
+        elif tokens[1].find("show") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_show(f"Review {class_id}")
 
 
 if __name__ == '__main__':
