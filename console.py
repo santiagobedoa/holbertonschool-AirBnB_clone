@@ -162,6 +162,9 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("show") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_show(f"BaseModel {class_id}")
+        elif tokens[1].find("destroy") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_destroy(f"BaseModel {class_id}")
 
     def do_User(self, line):
         """Use: User.<method>() advanced task"""
@@ -177,6 +180,9 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("show") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_show(f"User {class_id}")
+        elif tokens[1].find("destroy") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_destroy(f"User {class_id}")
 
     def do_State(self, line):
         """Use: State.<method>() advanced task"""
@@ -192,6 +198,9 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("show") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_show(f"State {class_id}")
+        elif tokens[1].find("destroy") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_destroy(f"State {class_id}")
 
     def do_City(self, line):
         """Use: City.<method>() advanced task"""
@@ -207,6 +216,9 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("show") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_show(f"City {class_id}")
+        elif tokens[1].find("destroy") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_destroy(f"City {class_id}")
 
     def do_Amenity(self, line):
         """Use: Amenity.<method>() advanced task"""
@@ -222,6 +234,9 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("show") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_show(f"Amenity {class_id}")
+        elif tokens[1].find("destroy") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_destroy(f"Amenity {class_id}")
 
     def do_Place(self, line):
         """Use: Place.<method>() advanced task"""
@@ -237,6 +252,9 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("show") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_show(f"Place {class_id}")
+        elif tokens[1].find("destroy") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_destroy(f"Place {class_id}")
 
     def do_Review(self, line):
         """Use: Review.<method>() advanced task"""
@@ -252,6 +270,9 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("show") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_show(f"Review {class_id}")
+        elif tokens[1].find("destroy") != -1:
+            class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
+            self.do_destroy(f"Review {class_id}")
 
 
 if __name__ == '__main__':
