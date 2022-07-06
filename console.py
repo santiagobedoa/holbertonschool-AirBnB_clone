@@ -96,6 +96,8 @@ class HBNBCommand(cmd.Cmd):
                 if line in key:
                     list_objects.append(str(value))
             print(list_objects)
+        else:
+            print("** class doesn't exist **")
 
     def do_update(self, line):
         """update an instance based on the class id"""
