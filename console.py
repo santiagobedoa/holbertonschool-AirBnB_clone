@@ -167,9 +167,17 @@ class HBNBCommand(cmd.Cmd):
             self.do_destroy(f"BaseModel {class_id}")
         elif tokens[1].find("update") != -1:
             expresion = (re.search(r'\((.*)\)', tokens[1])).group(1)
-            args = expresion.split(", ")
-            args = [x.replace("\"", "") for x in args]
-            self.do_update(f"BaseModel {args[0]} {args[1]} {args[2]}")
+            if expresion.find("{") != -1:
+                args = expresion.split(", ", 1)
+                class_id = args[0].replace("\"", "")
+                attrs = re.sub("{*'*\"*}*", '', args[1])
+                attrs = dict(e.split(': ') for e in attrs.split(', '))
+                for key, value in attrs.items():
+                    self.do_update(f"BaseModel {class_id} {key} {value}")
+            else:
+                args = expresion.split(", ")
+                args = [x.replace("\"", "") for x in args]
+                self.do_update(f"BaseModel {args[0]} {args[1]} {args[2]}")
 
     def do_User(self, line):
         """Use: User.<method>() advanced task"""
