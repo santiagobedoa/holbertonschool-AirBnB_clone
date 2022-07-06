@@ -33,8 +33,42 @@ class TestUser(unittest.TestCase):
         self.assertEqual(3, count)
 
     def test_inheritance(self):
-        """ Test if user inherits from BaseModel """
-        self.assertIsInstance(self.user, BaseModel)
+        """ Test if user inherits from user """
+        self.assertIsInstance(self.user, User)
+
+    def test_to_dict(self):
+        """ Test dictionary conversion creating new key/value pairs """
+        self.user.email = "holbie@holbertonschool.com"
+        self.user.password = "*#$@&"
+        dict_test = self.user.to_dict()
+        test_attr = ['id',
+                     'email',
+                     'password',
+                     'created_at',
+                     'updated_at',
+                     '__class__'
+                     ]
+        real_attr = list(dict_test.keys())
+        self.assertCountEqual(real_attr, test_attr)
+
+    def test_to_dict_values(self):
+        """ Test dict values """
+        time_fmt = "%Y-%m-%dT%H:%M:%S.%f"
+        self.user.email = "holbie@holbertonschool.com"
+        self.user.password = "*#$@&"
+        dict_test = self.user.to_dict()
+        self.assertEqual(dict_test['email'], "holbie@holbertonschool.com")
+        self.assertEqual(dict_test['password'], "*#$@&")
+        self.assertEqual(dict_test['__class__'], "User")
+        self.assertEqual(dict_test['created_at'],
+                         self.user.created_at.strftime(time_fmt))
+        self.assertEqual(dict_test['updated_at'],
+                         self.user.updated_at.strftime(time_fmt))
+
+    def test_str(self):
+        """ Test string method """
+        test_str = f"[User] ({self.user.id}) {self.user.__dict__}"
+        self.assertEqual(test_str, str(self.user))
 
     def test_email_attr(self):
         """ Test if email is an attribute of user """
