@@ -105,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
         """update an instance based on the class id"""
         tokens = shlex.split(line)
         integers = ['number_rooms', 'number_bathrooms',
-                    'max_guest', 'price_by_night']
+                    'max_guest', 'price_by_night', 'age']
         floats = ['latitude', 'longitude']
         if len(tokens) == 0:
             print("** class name missing **")
@@ -165,6 +165,11 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("destroy") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_destroy(f"BaseModel {class_id}")
+        elif tokens[1].find("update") != -1:
+            expresion = (re.search(r'\((.*)\)', tokens[1])).group(1)
+            args = expresion.split(", ")
+            args = [x.replace("\"", "") for x in args]
+            self.do_update(f"BaseModel {args[0]} {args[1]} {args[2]}")
 
     def do_User(self, line):
         """Use: User.<method>() advanced task"""
@@ -183,6 +188,11 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("destroy") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_destroy(f"User {class_id}")
+        elif tokens[1].find("update") != -1:
+            expresion = (re.search(r'\((.*)\)', tokens[1])).group(1)
+            args = expresion.split(", ")
+            args = [x.replace("\"", "") for x in args]
+            self.do_update(f"User {args[0]} {args[1]} {args[2]}")
 
     def do_State(self, line):
         """Use: State.<method>() advanced task"""
@@ -201,6 +211,11 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("destroy") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_destroy(f"State {class_id}")
+        elif tokens[1].find("update") != -1:
+            expresion = (re.search(r'\((.*)\)', tokens[1])).group(1)
+            args = expresion.split(", ")
+            args = [x.replace("\"", "") for x in args]
+            self.do_update(f"State {args[0]} {args[1]} {args[2]}")
 
     def do_City(self, line):
         """Use: City.<method>() advanced task"""
@@ -219,6 +234,11 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("destroy") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_destroy(f"City {class_id}")
+        elif tokens[1].find("update") != -1:
+            expresion = (re.search(r'\((.*)\)', tokens[1])).group(1)
+            args = expresion.split(", ")
+            args = [x.replace("\"", "") for x in args]
+            self.do_update(f"City {args[0]} {args[1]} {args[2]}")
 
     def do_Amenity(self, line):
         """Use: Amenity.<method>() advanced task"""
@@ -237,6 +257,11 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("destroy") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_destroy(f"Amenity {class_id}")
+        elif tokens[1].find("update") != -1:
+            expresion = (re.search(r'\((.*)\)', tokens[1])).group(1)
+            args = expresion.split(", ")
+            args = [x.replace("\"", "") for x in args]
+            self.do_update(f"Amenity {args[0]} {args[1]} {args[2]}")
 
     def do_Place(self, line):
         """Use: Place.<method>() advanced task"""
@@ -255,6 +280,11 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("destroy") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_destroy(f"Place {class_id}")
+        elif tokens[1].find("update") != -1:
+            expresion = (re.search(r'\((.*)\)', tokens[1])).group(1)
+            args = expresion.split(", ")
+            args = [x.replace("\"", "") for x in args]
+            self.do_update(f"Place {args[0]} {args[1]} {args[2]}")
 
     def do_Review(self, line):
         """Use: Review.<method>() advanced task"""
@@ -273,6 +303,11 @@ class HBNBCommand(cmd.Cmd):
         elif tokens[1].find("destroy") != -1:
             class_id = (re.search('\"(.*)\"', tokens[1])).group(1)
             self.do_destroy(f"Review {class_id}")
+        elif tokens[1].find("update") != -1:
+            expresion = (re.search(r'\((.*)\)', tokens[1])).group(1)
+            args = expresion.split(", ")
+            args = [x.replace("\"", "") for x in args]
+            self.do_update(f"Review {args[0]} {args[1]} {args[2]}")
 
 
 if __name__ == '__main__':
