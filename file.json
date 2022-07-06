@@ -1,28 +1,17 @@
 {
-    "BaseModel.89665f56-2693-4c36-8bbf-1ec33b7d7244": {
-        "id": "89665f56-2693-4c36-8bbf-1ec33b7d7244",
-        "created_at": "2022-07-06T10:10:26.850548",
-        "updated_at": "2022-07-06T10:10:26.850582",
-        "__class__": "BaseModel"
+    "User.3d6be64f-68be-44f1-814a-803169c8fb77": {
+        "id": "3d6be64f-68be-44f1-814a-803169c8fb77",
+        "created_at": "2022-07-06T17:44:18.527639",
+        "updated_at": "2022-07-06T18:36:08.113238",
+        "first_name": "John",
+        "age": 89,
+        "__class__": "User"
     },
-    "Place.dbc43ba7-5a25-4d72-a474-199ba23f721a": {
-        "id": "dbc43ba7-5a25-4d72-a474-199ba23f721a",
-        "created_at": "2022-07-06T11:00:01.177120",
-        "updated_at": "2022-07-06T11:00:01.177168",
-        "__class__": "Place"
-    },
-    "Place.55f1e588-fdb0-4b7f-87d4-53ec7bd8b00c": {
-        "id": "55f1e588-fdb0-4b7f-87d4-53ec7bd8b00c",
-        "created_at": "2022-07-06T11:00:05.547397",
-        "updated_at": "2022-07-06T11:00:05.547428",
-        "__class__": "Place"
-    },
-    "User.6c5dec00-85ef-4743-8cea-99368f3ca491": {
-        "id": "6c5dec00-85ef-4743-8cea-99368f3ca491",
-        "created_at": "2022-07-06T17:10:51.680043",
-        "updated_at": "2022-07-06T17:11:46.299076",
-        "age": 32,
-        "name": "hola",
+    "User.02233f50-12bd-4be9-af2a-8ec09198eda3": {
+        "id": "02233f50-12bd-4be9-af2a-8ec09198eda3",
+        "created_at": "2022-07-06T18:36:37.669895",
+        "updated_at": "2022-07-06T18:37:15.909978",
+        "age": 89,
         "__class__": "User"
     }
 }
