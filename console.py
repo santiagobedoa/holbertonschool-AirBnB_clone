@@ -151,42 +151,84 @@ class HBNBCommand(cmd.Cmd):
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("BaseModel")
+        elif tokens[1] == "count()":
+            count = 0
+            for key in storage.all():
+                if "BaseModel" in str(key):
+                    count += 1
+            print(count)
 
     def do_User(self, line):
         """Test"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("User")
+        elif tokens[1] == "count()":
+            count = 0
+            for key in storage.all():
+                if "User" in str(key):
+                    count += 1
+            print(count)
 
     def do_State(self, line):
         """Test"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("State")
+        elif tokens[1] == "count()":
+            count = 0
+            for key in storage.all():
+                if "State" in str(key):
+                    count += 1
+            print(count)
 
     def do_City(self, line):
         """Test"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("City")
+        elif tokens[1] == "count()":
+            count = 0
+            for key in storage.all():
+                if "City" in str(key):
+                    count += 1
+            print(count)
 
     def do_Amenity(self, line):
         """Test"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("Amenity")
+        elif tokens[1] == "count()":
+            count = 0
+            for key in storage.all():
+                if "Amenity" in str(key):
+                    count += 1
+            print(count)
 
     def do_Place(self, line):
         """Test"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("Place")
+        elif tokens[1] == "count()":
+            count = 0
+            for key in storage.all():
+                if "Place" in str(key):
+                    count += 1
+            print(count)
 
     def do_Review(self, line):
         """Test"""
         tokens = line.split(".")
         if tokens[1] == "all()":
             self.do_all("Review")
+        elif tokens[1] == "count()":
+            count = 0
+            for key in storage.all():
+                if "Review" in str(key):
+                    count += 1
+            print(count)
 
 
 if __name__ == '__main__':
