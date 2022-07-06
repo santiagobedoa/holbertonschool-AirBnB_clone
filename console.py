@@ -146,6 +146,48 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program"""
         return True
 
+    def do_BaseModel(self, line):
+        "Test"
+        tokens = line.split(".")
+        if tokens[1] == "all()":
+            self.do_all("BaseModel")
+
+    def do_User(self, line):
+        """Test"""
+        tokens = line.split(".")
+        if tokens[1] == "all()":
+            self.do_all("User")
+
+    def do_State(self, line):
+        """Test"""
+        tokens = line.split(".")
+        if tokens[1] == "all()":
+            self.do_all("State")
+
+    def do_City(self, line):
+        """Test"""
+        tokens = line.split(".")
+        if tokens[1] == "all()":
+            self.do_all("City")
+
+    def do_Amenity(self, line):
+        """Test"""
+        tokens = line.split(".")
+        if tokens[1] == "all()":
+            self.do_all("Amenity")
+
+    def do_Place(self, line):
+        """Test"""
+        tokens = line.split(".")
+        if tokens[1] == "all()":
+            self.do_all("Place")
+
+    def do_Review(self, line):
+        """Test"""
+        tokens = line.split(".")
+        if tokens[1] == "all()":
+            self.do_all("Review")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
