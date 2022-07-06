@@ -100,6 +100,9 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, line):
         """update an instance based on the class id"""
         tokens = shlex.split(line)
+        integers = ['number_rooms', 'number_bathrooms',
+                    'max_guest', 'price_by_night']
+        floats = ['latitude', 'longitude']
         if len(tokens) == 0:
             print("** class name missing **")
         elif len(tokens) == 1 and tokens[0] in self.classes.keys():
@@ -115,6 +118,10 @@ class HBNBCommand(cmd.Cmd):
             flag = 0
             for k in objects.keys():
                 if str(tokens[1]) in k:
+                    if tokens[2] in integers:
+                        tokens[3] = int(tokens[3])
+                    elif tokens[2] in floats:
+                        tokens[3] = float(tokens[3])
                     setattr(objects[k], tokens[2], tokens[3])
                     objects[k].save()
                     flag = 1
