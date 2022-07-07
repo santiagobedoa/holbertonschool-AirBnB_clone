@@ -26,7 +26,6 @@ class TestStorage(unittest.TestCase):
 
     def test_reload(self):
         """ Test storage reload function """
-        # self.base = BaseModel()
         self.base.name = "Manu"
         self.base.save()
         base_id = self.base.id
@@ -41,14 +40,12 @@ class TestStorage(unittest.TestCase):
 
     def test_save_file(self):
         """ Test storage save the file """
-        # self.base = BaseModel()
         self.base.save()
         self.assertTrue(os.path.exists('./file.json') is True)
         os.remove('./file.json')
 
     def test_save_content(self):
         """ Test storage save the correct content """
-        # self.base = BaseModel()
         self.base.name = "Santi"
         base_id = self.base.id
         self.base.save()

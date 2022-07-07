@@ -90,6 +90,13 @@ class TestAmenity(unittest.TestCase):
         test_str = f"[Amenity] ({self.amenity.id}) {self.amenity.__dict__}"
         self.assertEqual(test_str, str(self.amenity))
 
+    def test_name_attr(self):
+        """ Test if name is an attribute of Amenity """
+        self.assertTrue(hasattr(self.amenity, 'name'))
+        self.assertEqual(self.amenity.name, "")
+        self.amenity.name = "Holbertonlandia"
+        self.assertEqual(self.amenity.name, "Holbertonlandia")
+
 
 if __name__ == '__main__':
     unittest.main()

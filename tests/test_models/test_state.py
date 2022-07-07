@@ -90,6 +90,13 @@ class TestState(unittest.TestCase):
         test_str = f"[State] ({self.state.id}) {self.state.__dict__}"
         self.assertEqual(test_str, str(self.state))
 
+    def test_name_attr(self):
+        """ Test if name is an attribute of State """
+        self.assertTrue(hasattr(self.state, 'name'))
+        self.assertEqual(self.state.name, "")
+        self.state.name = "Holbertonlandia"
+        self.assertEqual(self.state.name, "Holbertonlandia")
+
 
 if __name__ == '__main__':
     unittest.main()

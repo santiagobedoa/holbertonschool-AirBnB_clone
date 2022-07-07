@@ -93,6 +93,27 @@ class TestReview(unittest.TestCase):
         test_str = f"[Review] ({self.review.id}) {self.review.__dict__}"
         self.assertEqual(test_str, str(self.review))
 
+    def test_place_id_attr(self):
+        """ Test if place_id is an attribute of Review """
+        self.assertTrue(hasattr(self.review, 'place_id'))
+        self.assertEqual(self.review.place_id, "")
+        self.review.place_id = "12345"
+        self.assertEqual(self.review.place_id, "12345")
+
+    def test_user_id_attr(self):
+        """ Test if user_id is an attribute of Review """
+        self.assertTrue(hasattr(self.review, 'user_id'))
+        self.assertEqual(self.review.place_id, "")
+        self.review.user_id = "12345"
+        self.assertEqual(self.review.user_id, "12345")
+
+    def test_text_attr(self):
+        """ Test if text is an attribute of Review """
+        self.assertTrue(hasattr(self.review, 'text'))
+        self.assertEqual(self.review.text, "")
+        self.review.text = "12345"
+        self.assertEqual(self.review.text, "12345")
+
 
 if __name__ == '__main__':
     unittest.main()
