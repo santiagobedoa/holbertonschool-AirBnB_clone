@@ -50,13 +50,9 @@ class HBNBCommand(cmd.Cmd):
                 if len(tokens) == 1:
                     print("** instance id missing **")
                 else:
-                    objects = storage.all()
-                    flag = None
-                    for key in objects.keys():
-                        if str(tokens[1]) in key:
-                            flag = key
-                    if flag:
-                        print(objects[flag])
+                    key = tokens[0] + "." + tokens[1]
+                    if key in storage.all():
+                        print(storage.all()[key])
                     else:
                         print("** no instance found **")
             else:
@@ -72,13 +68,9 @@ class HBNBCommand(cmd.Cmd):
                 if len(tokens) == 1:
                     print("** instance id missing **")
                 else:
-                    objects = storage.all()
-                    flag = None
-                    for key in objects.keys():
-                        if str(tokens[1]) in key:
-                            flag = key
-                    if flag:
-                        del(objects[flag])
+                    key = tokens[0] + "." + tokens[1]
+                    if key in storage.all():
+                        storage.all().pop(key)
                         storage.save()
                     else:
                         print("** no instance found **")
